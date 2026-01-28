@@ -1,7 +1,19 @@
+// require("dotenv").config();
+console.log(process.env.BOT_TOKEN);
+
 const TelegramBot = require("node-telegram-bot-api");
 const { google } = require("googleapis");
-const spreadsheetId = "1Nw2cxhJ58hcbi-IRzOPO_AAbj0cVQhmPR1cUI8PNuBc";
-const token = "8262001392:AAG3cDvzhpPm3gwhcqbcnGVzZRgmt0_Zz_w";
+// const spreadsheetId = "1Nw2cxhJ58hcbi-IRzOPO_AAbj0cVQhmPR1cUI8PNuBc";
+const spreadsheetId = process.env.SPREADSHEET_ID;
+// const token = "8262001392:AAG3cDvzhpPm3gwhcqbcnGVzZRgmt0_Zz_w";
+//set BOT_TOKEN = "8262001392:AAG3cDvzhpPm3gwhcqbcnGVzZRgmt0_Zz_w"
+const token = process.env.BOT_TOKEN;
+
+if (!token) {
+  console.log("BOT TOKEN KOSONG");
+  process.exit(1);
+}
+
 const bot = new TelegramBot(token, { polling: true });
 const sheetName = "Data Visit";
 
@@ -149,3 +161,5 @@ bot.on("message", async (msg) => {
     bot.sendMessage(chatId, "❌ Gagal simpan ke Google Sheet");
   }
 });
+
+console.log("BOT RUNNING...");
