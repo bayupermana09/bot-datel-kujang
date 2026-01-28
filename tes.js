@@ -114,7 +114,7 @@ bot.on("message", async (msg) => {
   const day = now.getDate();
   const month = now.getMonth() + 1;
   const year = now.getFullYear();
-  const date = `${day}/${month}/${year}`;
+  const date = `${month}/${day}/${year}`;
 
   try {
     // ===== AMBIL KOLOM B =====
