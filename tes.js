@@ -19,7 +19,7 @@ const sheetName = "Data Visit";
 
 // GOOGLE AUTH
 const auth = new google.auth.GoogleAuth({
-  keyFile: "credentials.json",
+  credentials: JSON.parse(process.env.GOOGLE_KEY),
   scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 
